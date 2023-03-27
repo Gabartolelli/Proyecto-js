@@ -1,11 +1,10 @@
-let nombreApellido
-let domicilio 
-let localidad 
+
 const envioRegional = 1500
 const envioNacional = 2000
 
-const CP = () =>{
+const cp = () =>{
     do{
+    let codigoPostal
     codigoPostal = parseInt(prompt("Ingrese su codigo postal"))
     }while (isNaN (codigoPostal))
     return codigoPostal
@@ -13,10 +12,10 @@ const CP = () =>{
 let continuar = true
 
 while (continuar){
-    nombreApellido = prompt ("Ingrese su nombre y apellido")
-    domicilio = prompt ("Ingrese su domicilio")
-    localidad = prompt ("Ingrese su lucalidad")
-    CP()
+    const nombreApellido = prompt ("Ingrese su nombre y apellido")
+    const domicilio = prompt ("Ingrese su domicilio")
+    const localidad = prompt ("Ingrese su lucalidad")
+    const codigoPostal = cp()
     if(codigoPostal <= 4000){
         alert ("Gracias por su compra "+ nombreApellido + " el costo de envio es "+ envioRegional)
 }
