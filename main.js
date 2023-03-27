@@ -1,27 +1,29 @@
-const codigoPostal = (mensaje) => {
-    let CP
-    do{
-        CP = parseInt ( prompt (mensaje))
-     }while (isNaN (CP))
-}
-let costoEnvio = true
-while (costoEnvio){
-let nombreApellido = prompt ("Ingrese su nombre y apellido")
-let domicilio = prompt ("Ingrese su domicilio")
-let localidad = prompt ("Ingrese su localidad")
-let CP = codigoPostal ("ingrese su codigo postal")
-let provincia = prompt ("Ingrese su provincia")
-const envioRegional = 1500.00
-const envioNacional = 2000.00
+let nombreApellido
+let domicilio 
+let localidad 
+const envioRegional = 1500
+const envioNacional = 2000
 
-if(CP <= 4000) {
-    alert("Gracias por su compra "+ nombreApellido + " su costo de envio es de "+ envioRegional)
-    
+const CP = () =>{
+    codigoPostal = parseInt(prompt("Ingrese su codigo postal"))
+    return codigoPostal
 }
+let continuar = true
 
-else if (CP> 4000){
-    alert("Gracias por su compra "+ nombreApellido + " su costo de envio es de "+ envioNacional)
+while (continuar){
+    nombreApellido = prompt ("Ingrese su nombre y apellido")
+    domicilio = prompt ("Ingrese su domicilio")
+    localidad = prompt ("Ingrese su lucalidad")
+    CP()
+    if(codigoPostal <= 4000){
+        alert ("Gracias por su compra "+ nombreApellido + " el costo de envio es "+ envioRegional)
 }
-break
+    else if (codigoPostal > 4000 && codigoPostal<= 9500){
+    alert ("Gracias por su compra "+ nombreApellido + " el costo de envio es "+ envioNacional)
+}
+    else {
+    alert("El codigo postal no pertenece a la Republica argentina")
 
+}
+continuar= confirm ("¿desea editar algun dato o confirma los ya puesto?")
 }
