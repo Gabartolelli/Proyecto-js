@@ -5,7 +5,9 @@ const envioRegional = 1500
 const envioNacional = 2000
 
 const CP = () =>{
+    do{
     codigoPostal = parseInt(prompt("Ingrese su codigo postal"))
+    }while (isNaN (codigoPostal))
     return codigoPostal
 }
 let continuar = true
@@ -25,5 +27,5 @@ while (continuar){
     alert("El codigo postal no pertenece a la Republica argentina")
 
 }
-continuar= confirm ("¿desea editar algun dato o confirma los ya puesto?")
+continuar= confirm ("¿desea editar algun dato?")
 }
