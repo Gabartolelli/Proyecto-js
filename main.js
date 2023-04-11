@@ -1,49 +1,61 @@
 
-const productos = []
+const carrito = []
+let total = 0
 const ambo = () =>{
+    const nombre = ("Ambo")
     const talle = prompt( "Ingrese su talle: S/M/L/XL/XXL")
-    const color = prompt("Ingrese color (blanco/negro")
+    const color = prompt("Ingrese color (blanco/negro)")
     const precio = 2500
-    productos.push({
+    carrito.push({
+        nombre:nombre,
         talle:talle,
         color:color,
         precio:precio
     })
 }
 const guardapolvo = () =>{
+    const nombre= ("Guardapolvo")
     const talle = prompt( "Ingrese su talle: S/M/L/XL/XXL")
-    const color = prompt("Ingrese color (rojo/azul")
+    const color = prompt("Ingrese color (rojo/azul)")
     const precio = 3500
-    productos.push({
+    carrito.push({
+        nombre:nombre,
         talle:talle,
         color:color,
         precio:precio
     })
 }
 const magisterio = () =>{
+    const nombre =("Magisterio")
     const talle = prompt( "Ingrese su talle: S/M/L/XL/XXL")
     const color = prompt("Ingrese color")
     const precio = 3000
-    productos.push({
+    carrito.push({
+        nombre:nombre,
         talle:talle,
         color:color,
         precio:precio
     })
 }
 const overol = () =>{
+    const nombre = ("Overol")
     const talle = prompt( "Ingrese su talle: S/M/L/XL/XXL")
-    const color = prompt("Ingrese color (azul/gris")
+    const color = prompt("Ingrese color (azul/gris)")
     const precio = 5000
-    productos.push({
+    carrito.push({
+        nombre:nombre,
         talle:talle,
         color:color,
         precio:precio
     })
 }
 const verProductos = () =>{
-    productos.forEach((producto)=>{
-         alert("usted ha comprado" + productos)
+    carrito.forEach((producto)=>{
+         alert("usted ha comprado: "+ producto.nombre +" talle: "+ producto.talle+" color: "+ producto.color + " precio: " +producto.precio)
      })
+ }
+ const totalCarrito = () =>{
+ total = carrito.reduce((total,producto,codigoPostal) => total+ producto.precio+codigoPostal,0)
  }
 
 
@@ -77,10 +89,13 @@ const vender = (producto) =>{
 }
 vender (true)
 verProductos()
-//alert("usted ha comprado" + productos)
+totalCarrito()
 
 
-/*
+
+
+
+
 const envioRegional = 1500
 const envioNacional = 2000
 const cp = () =>{
@@ -108,6 +123,6 @@ while (continuar){
     }
     continuar= confirm ("¿desea editar algun dato?")
 }
-*/
-
+alert("total a pagar: $"+ total)
+alert("Muchas gracias por su compra, su producto sera despachado en breve")
 
