@@ -1,4 +1,4 @@
-
+/*
 const carrito = []
 let total = 0
 const ambo = () =>{
@@ -125,4 +125,4 @@ while (continuar){
 }
 alert("total a pagar: $"+ total)
 alert("Muchas gracias por su compra, su producto sera despachado en breve")
-
+*/

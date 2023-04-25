@@ -6,23 +6,40 @@
     body{
         background-color: rgba(121, 121, 124, 0.521);
     }
+    nav{
+        width: 100%;
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
 
     header{
-        background-image: url(../img/envio-todo-pais.png);
-        background-size: contain;
         width: 100%;
-        height: 100px;
+        height: 160px;
+        background-color: red;
+       
+    }
+    header > .minicards{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
         
     }
-   main > .datos{
-        width: 100%;
-        height: auto;
-        background-color: rgb(45, 103, 211);
-
+    .minicard{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        margin: 15px;
     }
-
-    h1{
-        color: blue;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: xx-large;
+    .minicard > img{
+        width: 100px;
+        height: 1000px
+    }
+    .minicard > h6{
+        margin-top: 10px;
+        color: black;
     }
