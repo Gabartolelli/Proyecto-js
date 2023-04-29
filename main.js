@@ -1,59 +1,15 @@
-const tarjetas = document.getElementById("tarjetas")
+
 const verCarrito = document.getElementById("verCarrito")
 const contenedorProducto = document.getElementById("contenedorProducto")
 
-const productos=[
-    {
-        id:1,
-        nombre:" Guardapolvo",
-        precio:5000,
-        img:"./assets/img/guardapolvo.png"
-    },
-    {
-        id:2,
-        nombre:"Ambo",
-        precio:4500,
-        img:"./assets/img/ambo.jpg"
 
-
-    },
-    {
-        id:3,
-        nombre:"Gastronomia",
-        precio:6000,
-        img:"./assets/img/saco chef.jpg"
-
-
-    },
-    {
-        id:4,
-        nombre:"Magisterio",
-        precio:5500,
-        img:"./assets/img/ponchos-magist-cat.jpg"
-
-
-    }
-]
 
 let carrito = []
 
-productos.forEach((producto) => {
-    let tarjeta = document.createElement("div")
-    tarjeta.className="tarjeta"
-    tarjeta.innerHTML = `
-    <img src="${producto.img}">
-    <h3>${producto.nombre}</h3>
-    <p class="precio">$${producto.precio}</p>`
+const agregarCarrito = (producto) =>{
 
-    tarjetas.append(tarjeta)
-
-    let agregarCarrito = document.createElement("button")
-    agregarCarrito.innerText = "Agregar al carrito"
-    agregarCarrito.className = "agregar"
-    
-    tarjeta.append(agregarCarrito)
-
-    agregarCarrito.addEventListener("click",()=>{
+    const carritoBtn = document.querySelector("#agregarCarrito" + producto.id)
+    carritoBtn.addEventListener("click",()=>{
         carrito.push({
             id:producto.id,
             img:producto.img,
@@ -61,7 +17,27 @@ productos.forEach((producto) => {
             precio:producto.precio
         })
     })
-});
+}
+const verProducto = (producto) =>{
+    const tarjetas = document.getElementById("tarjetas")
+    let tarjeta = document.createElement("div")
+    tarjeta.className="tarjeta"
+    tarjeta.innerHTML = `
+    <img src="${producto.img}">
+    <h3>${producto.nombre}</h3>
+    <p class="precio">$${producto.precio}</p>
+    <button id="agregarCarrito${producto.id}" class = "agregar">Agregar al carrito</button>
+    `
+    tarjetas.append(tarjeta)
+}
+
+const inicializar = ()=>{
+    productos.forEach((producto) => {
+        verProducto(producto)
+        agregarCarrito(producto)
+    });
+}
+inicializar()
 
 verCarrito.addEventListener("click", ()=>{
     contenedorProducto.innerHTML=""
