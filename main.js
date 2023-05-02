@@ -1,10 +1,12 @@
 
 const verCarrito = document.getElementById("verCarrito")
 const contenedorProducto = document.getElementById("contenedorProducto")
+const saveLocal = () =>{
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+}
 
 
-
-let carrito = []
+let carrito = JSON.parse(localStorage.getItem("carrito")) || []
 
 const agregarCarrito = (producto) =>{
 
@@ -16,6 +18,7 @@ const agregarCarrito = (producto) =>{
             nombre:producto.nombre,
             precio:producto.precio
         })
+        saveLocal()
     })
 }
 const verProducto = (producto) =>{
@@ -39,46 +42,7 @@ const inicializar = ()=>{
 }
 inicializar()
 
-verCarrito.addEventListener("click", ()=>{
-    contenedorProducto.innerHTML=""
-    contenedorProducto.style.display = "flex"
-    const headerCarrito = document.createElement("div")
-    headerCarrito.className = "headerCarrito"
-    headerCarrito.innerHTML = `
-        <h1 class="tituloHeader">Carrito</h1>
-        `
 
-    contenedorProducto.append(headerCarrito)
-
-    const btnCarrito = document.createElement("button")
-        btnCarrito.innerHTML = `
-        <button class="btnCarrito">X</button>
-        `
-    btnCarrito.addEventListener("click",()=>{
-        contenedorProducto.style.display="none"
-    })
-    contenedorProducto.append(btnCarrito)
-
-    carrito.forEach((producto)=>{
-        let contenedorCarrito = document.createElement("div")
-        contenedorCarrito.className = "contenedorCarrito"
-        contenedorCarrito.innerHTML = `
-        <img src="${producto.img}">
-        <h3>${producto.nombre}</h3>
-        <p>$${producto.precio}</p>
-        `
-    
-    contenedorProducto.append(contenedorCarrito)
-    
-})
-const total=carrito.reduce((acc,e) => acc + e.precio,0)
-
-    const totalCompra= document.createElement("div")
-    totalCompra.className ="totalCompra"
-    totalCompra.innerHTML =`Total a pagar: $${total}
-    `
-    contenedorProducto.append(totalCompra)
-})
 
 
 /*
