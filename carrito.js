@@ -13,6 +13,8 @@
         btnCarrito.className = "btnCarrito"
         btnCarrito.addEventListener("click",()=>{
         contenedorProducto.style.display="none"
+
+
     })
     headerCarrito.append(btnCarrito)
 
@@ -24,14 +26,16 @@
         <img src="${producto.img}">
         <h3>${producto.nombre}</h3>
         <p>$${producto.precio}</p>
-        <span id = "eliminarProducto${producto.id}" class="eliminarProducto">❌</span>
+        <span id="eliminarProducto${producto.id}" class="eliminarProducto">❌</span>
         `
     
     contenedorProducto.append(contenedorCarrito)
     
-})
+    const eliminarBtn = document.querySelector("#eliminarProducto"+ producto.id)
+    eliminarBtn.addEventListener("click",() => eliminarProducto(producto.id))
+   })
 
-const total=carrito.reduce((acc,e) => acc + e.precio,0)
+    const total=carrito.reduce((acc,e) => acc + e.precio,0)
 
     const totalCompra= document.createElement("div")
     totalCompra.className ="totalCompra"
@@ -41,17 +45,19 @@ const total=carrito.reduce((acc,e) => acc + e.precio,0)
 
 
 }
-    
-const eliminarProducto = (id)=>{
-    const eliminarBtn=document.querySelector("#eliminarProducto" + id)
-    eliminarBtn.addEventListener("click",()=>{
-        const index = productos.findIndex((producto) => producto.id == id)
-        productos.splice(index,1)
-    })
-}
 
+const eliminarProducto = (id)=>{
+    const index = carrito.findIndex((producto) => producto.id == id)
+    carrito.splice(index,1)
+    saveLocal()
+    mirarCarrito()
+}
+ 
 verCarrito.addEventListener("click", mirarCarrito)
 
-eliminarProducto(0)
+
+
+
+
 
 

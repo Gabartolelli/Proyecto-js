@@ -38,6 +38,7 @@ const inicializar = ()=>{
     productos.forEach((producto) => {
         verProducto(producto)
         agregarCarrito(producto)
+        
     });
 }
 inicializar()
