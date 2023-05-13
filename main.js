@@ -8,6 +8,7 @@ const saveLocal = () =>{
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || []
 
+
 const agregarCarrito = (producto) =>{
 
     const carritoBtn = document.querySelector("#agregarCarrito" + producto.id)
@@ -34,14 +35,22 @@ const verProducto = (producto) =>{
     tarjetas.append(tarjeta)
 }
 
-const inicializar = ()=>{
-    productos.forEach((producto) => {
-        verProducto(producto)
-        agregarCarrito(producto)
-        
-    });
+const products = async ()=>{
+    const respuesta = await fetch("productos.json")
+    const productos= await respuesta.json()
+    const inicializar = ()=>{
+        productos.forEach((producto) => {
+            verProducto(producto)
+            agregarCarrito(producto)
+            
+        });
+    }
+    inicializar()
+    
 }
-inicializar()
+products()
+
+
 
 
 
