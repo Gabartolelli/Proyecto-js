@@ -1,6 +1,7 @@
 
 const verCarrito = document.getElementById("verCarrito")
 const contenedorProducto = document.getElementById("contenedorProducto")
+const cantidadCarrito = document.querySelector("#cantidadCarrito")
 const saveLocal = () =>{
     localStorage.setItem("carrito", JSON.stringify(carrito))
 }
@@ -13,13 +14,25 @@ const agregarCarrito = (producto) =>{
 
     const carritoBtn = document.querySelector("#agregarCarrito" + producto.id)
     carritoBtn.addEventListener("click",()=>{
+        const repeat = carrito.some((repeatproducto)=> repeatproducto.id ===producto.id)
+    if(repeat){
+        carrito.map((prod)=>{
+            if(prod.id === producto.id){
+                prod.cantidad++
+            }
+        })
+    }else{
+
         carrito.push({
             id:producto.id,
             img:producto.img,
             nombre:producto.nombre,
-            precio:producto.precio
+            precio:producto.precio,
+            cantidad:producto.cantidad
         })
+    }
         saveLocal()
+        contadorCarrito()
     })
 }
 const verProducto = (producto) =>{
@@ -27,11 +40,11 @@ const verProducto = (producto) =>{
     let tarjeta = document.createElement("div")
     tarjeta.className="tarjeta"
     tarjeta.innerHTML = `
-    <img src="${producto.img}">
-    <h3>${producto.nombre}</h3>
-    <p class="precio">$${producto.precio}</p>
-    <button id="agregarCarrito${producto.id}" class = "agregar">Agregar al carrito</button>
-    `
+        <img src="${producto.img}">
+        <h3>${producto.nombre}</h3>
+        <p class="precio">$${producto.precio}</p>
+        <button id="agregarCarrito${producto.id}" class = "agregar">Agregar al carrito</button>
+        `
     tarjetas.append(tarjeta)
 }
 

@@ -25,7 +25,8 @@
         contenedorCarrito.innerHTML = `
         <img src="${producto.img}">
         <h3>${producto.nombre}</h3>
-        <p>$${producto.precio}</p>
+        <p>Cantidad: ${producto.cantidad}</p>
+        <p>$${producto.precio * producto.cantidad}</p>
         <span id="eliminarProducto${producto.id}" class="eliminarProducto">❌</span>
         `
     
@@ -33,9 +34,23 @@
     
     const eliminarBtn = document.querySelector("#eliminarProducto"+ producto.id)
     eliminarBtn.addEventListener("click",() => eliminarProducto(producto.id))
+    
+    const BorrarProducto = document.querySelector("#eliminarProducto" + producto.id)
+     BorrarProducto.addEventListener("click", () =>{
+        Swal.fire({
+            icon:`warning`,
+            text:`¡¡Eliminaste el producto!!`,
+            showConfirmButton: false,
+            background:'#000',
+            color:"#fff",
+            timer: 1500,
+
+        })
+     })
+  
    })
 
-    const total=carrito.reduce((acc,e) => acc + e.precio,0)
+    const total=carrito.reduce((acc,e) => acc + e.precio*e.cantidad,0)
 
     const totalCompra= document.createElement("div")
     totalCompra.className ="totalCompra"
@@ -51,11 +66,15 @@ const eliminarProducto = (id)=>{
     carrito.splice(index,1)
     saveLocal()
     mirarCarrito()
+    contadorCarrito()
 }
  
 verCarrito.addEventListener("click", mirarCarrito)
 
-
+const contadorCarrito = () =>{
+    cantidadCarrito.style.display = "block"
+    cantidadCarrito.innerText = carrito.length
+}
 
 
 

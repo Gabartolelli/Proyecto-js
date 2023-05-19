@@ -3,13 +3,15 @@
         "id":1,
         "nombre":" Guardapolvo",
         "precio":5000,
-        "img":"./assets/img/guardapolvo.png"
+        "img":"./assets/img/guardapolvo.png",
+        "cantidad": 1
     },
     {
         "id":2,
         "nombre":"Ambo",
         "precio":4500,
-        "img":"./assets/img/ambo.jpg"
+        "img":"./assets/img/ambo.jpg",
+        "cantidad":1
 
 
     },
@@ -17,7 +19,8 @@
         "id":3,
         "nombre":"Gastronomia",
         "precio":6000,
-        "img":"./assets/img/saco chef.jpg"
+        "img":"./assets/img/saco chef.jpg",
+        "cantidad":1
 
 
     },
@@ -25,7 +28,8 @@
         "id":4,
         "nombre":"Magisterio",
         "precio":5500,
-        "img":"./assets/img/ponchos-magist-cat.jpg"
+        "img":"./assets/img/ponchos-magist-cat.jpg",
+        "cantidad":1
 
 
     }
